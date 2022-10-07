@@ -9,7 +9,7 @@ const http = (url, method = 'get', config = {}) => fetch(url, {
 })
 
 
-// ============================------- Создание todo ------=================================
+// ============================------- Creating note ------=================================
 
 const todoCreateInput = document.querySelector('#create-todo-title')
 const todoCreateBtn = document.querySelector('#create-todo-btn')
@@ -23,13 +23,13 @@ async function createTodo () {
     const title = todoCreateInput.value
 
     if(!title){
-        alert('Запольните поле!')
+        alert('Write down something!')
     }
 
     const response = await http('/api/todos/create', 'post', {body: JSON.stringify({title})})
 
     if(!response.ok){
-        alert('Что то пошло не так!')
+        alert('Something is wrong!')
         return
     }
 
@@ -37,7 +37,7 @@ async function createTodo () {
 }
 
 
-// =====================----- Редактирование todo  ------============================
+// =====================----- Editing note  ------============================
 
 const editBtns = document.querySelectorAll('.show-edit-modal');
 const editTodoTitle = document.querySelector('#edit-todo-title')
@@ -86,7 +86,7 @@ async function editTodo (todoId) {
 }
 
 
-// =====================----- Удаление todo  ------============================
+// =====================----- Deleting note  ------============================
 
 const deleteBtns = document.querySelectorAll('.delete-todo-btn');
 
@@ -112,7 +112,7 @@ async function deleteTodo (todoId) {
     const response = await http(`/api/todos/delete/${todoId}`, 'delete')
 
     if(!response.ok){
-        alert('Что то пошло не так!')
+        alert('Something is wrong!')
         return
     }
 
